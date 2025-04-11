@@ -148,8 +148,8 @@ const ContactSection = () => {
           <div className="section-transition">
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
-                  <i className="ri-mail-line text-primary text-xl"></i>
+                <div className="bg-primary p-3 rounded-full mr-4">
+                  <i className="ri-mail-line text-white text-xl"></i>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1">Email</h3>
@@ -159,8 +159,8 @@ const ContactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
-                  <i className="ri-map-pin-line text-primary text-xl"></i>
+                <div className="bg-primary p-3 rounded-full mr-4">
+                  <i className="ri-map-pin-line text-white text-xl"></i>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1">Location</h3>
@@ -170,8 +170,8 @@ const ContactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
-                  <i className="ri-links-line text-primary text-xl"></i>
+                <div className="bg-primary p-3 rounded-full mr-4">
+                  <i className="ri-links-line text-white text-xl"></i>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1">Social</h3>

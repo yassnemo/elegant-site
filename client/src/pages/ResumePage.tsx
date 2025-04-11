@@ -50,7 +50,7 @@ const ResumePage = () => {
                 {skills.map((skill, index) => (
                   <span 
                     key={index} 
-                    className="skill-pill bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium"
+                    className={index % 3 === 0 ? "skill-pill bg-primary text-white px-4 py-2 rounded-full text-sm font-medium" : "skill-pill bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium"}
                   >
                     {skill}
                   </span>
