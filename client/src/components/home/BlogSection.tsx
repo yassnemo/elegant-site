@@ -27,7 +27,7 @@ const BlogSection = () => {
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <div className="flex gap-2 mb-4">
                   {post.tags.map((tag, i) => (
-                    <span key={i} className="bg-primary bg-opacity-10 text-primary text-xs px-3 py-1 rounded-full">
+                    <span key={i} className="bg-primary text-white text-xs px-3 py-1 rounded-full">
                       {tag}
                     </span>
                   ))}
