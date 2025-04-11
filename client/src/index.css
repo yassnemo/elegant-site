@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground cursor-none overflow-x-hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-primary transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover::after, .nav-link.active::after {
+    @apply w-full;
+  }
+  
+  .project-card {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    @apply shadow-xl;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70;
+  }
+  
+  .section-transition {
+    @apply opacity-0 translate-y-5 transition-all duration-700 ease-in-out;
+  }
+  
+  .section-visible {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  .animate-delay-1 {
+    animation-delay: 0.1s;
+  }
+  
+  .animate-delay-2 {
+    animation-delay: 0.3s;
+  }
+  
+  .animate-delay-3 {
+    animation-delay: 0.5s;
+  }
+  
+  .animate-delay-4 {
+    animation-delay: 0.7s;
+  }
+  
+  .skill-pill {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .skill-pill:hover {
+    transform: translateY(-3px);
+    @apply shadow-md;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
