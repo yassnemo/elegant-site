@@ -1,9 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
-import { gsap } from 'gsap';
+import { useEffect, useState } from 'react';
 
 const CustomCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const cursorDotRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -53,23 +50,6 @@ const CustomCursor = () => {
       } else {
         setLinkHovered(false);
       }
-
-      // Use GSAP for smoother cursor movement
-      if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-          duration: 0.3,
-          x: e.clientX,
-          y: e.clientY
-        });
-      }
-      
-      if (cursorDotRef.current) {
-        gsap.to(cursorDotRef.current, {
-          duration: 0.1,
-          x: e.clientX,
-          y: e.clientY
-        });
-      }
     };
 
     const onMouseDown = () => {
@@ -98,39 +78,22 @@ const CustomCursor = () => {
   if (typeof window === 'undefined') return null;
 
   return (
-    <>
-      {/* Larger circle */}
-      <div 
-        ref={cursorRef}
-        className={`fixed w-8 h-8 border border-hero-green rounded-full pointer-events-none z-[9999] transition-all duration-300 ${
-          hidden ? 'opacity-0' : 'opacity-100'
-        } ${
-          clicked ? 'scale-75' : 'scale-100'
-        } ${
-          linkHovered ? 'w-16 h-16 mix-blend-difference' : ''
-        }`}
-        style={{
-          left: 0,
-          top: 0,
-          transform: `translate(-50%, -50%)`
-        }}
-      />
-      
-      {/* Small dot */}
-      <div 
-        ref={cursorDotRef}
-        className={`fixed w-2 h-2 bg-hero-green rounded-full pointer-events-none z-[9999] transition-transform duration-150 ${
-          hidden ? 'opacity-0' : 'opacity-100'
-        } ${
-          clicked ? 'scale-150' : 'scale-100'
-        }`}
-        style={{
-          left: 0,
-          top: 0,
-          transform: `translate(-50%, -50%)`
-        }}
-      />
-    </>
+    <div 
+      className={`fixed w-8 h-8 rounded-full pointer-events-none z-[9999] transition-transform duration-100 mix-blend-difference ${
+        hidden ? 'opacity-0' : 'opacity-100'
+      } ${
+        clicked ? 'scale-75' : 'scale-100'
+      } ${
+        linkHovered ? 'scale-150 bg-white' : 'bg-primary/30'
+      }`}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transform: `translate(-50%, -50%) ${
+          clicked ? 'scale(0.75)' : linkHovered ? 'scale(1.5)' : 'scale(1)'
+        }`,
+      }}
+    />
   );
 };
 

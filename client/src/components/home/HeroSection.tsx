@@ -1,45 +1,43 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'wouter';
 import { gsap } from 'gsap';
-import ZigZagLine from '@/components/svg/ZigZagLine';
+import { Button } from '@/components/ui/button';
+import { scrollToSection } from '@/lib/utils';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const tagsRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const dotsRef1 = useRef<HTMLDivElement>(null);
-  const dotsRef2 = useRef<HTMLDivElement>(null);
-  const line1Ref = useRef<HTMLDivElement>(null);
-  const line2Ref = useRef<HTMLDivElement>(null);
-  const skillsRef1 = useRef<HTMLDivElement>(null);
-  const skillsRef2 = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
-    tl.fromTo(titleRef.current, 
-      { opacity: 0, y: 30 }, 
+    tl.fromTo(headingRef.current, 
+      { opacity: 0, y: 50 }, 
       { opacity: 1, y: 0, duration: 0.8, delay: 0.2 }
     )
-    .fromTo(subtitleRef.current, 
-      { opacity: 0, y: 20 }, 
+    .fromTo(textRef.current, 
+      { opacity: 0, y: 30 }, 
       { opacity: 1, y: 0, duration: 0.8 }, 
-      "-=0.5"
-    )
-    .fromTo(imageRef.current, 
-      { opacity: 0, scale: 0.95 }, 
-      { opacity: 1, scale: 1, duration: 0.8 }, 
-      "-=0.6"
-    )
-    .fromTo([dotsRef1.current, dotsRef2.current, line1Ref.current, line2Ref.current], 
-      { opacity: 0 }, 
-      { opacity: 1, stagger: 0.1, duration: 0.5 }, 
       "-=0.4"
     )
-    .fromTo([skillsRef1.current, skillsRef2.current], 
+    .fromTo(tagsRef.current, 
       { opacity: 0, y: 20 }, 
-      { opacity: 1, y: 0, stagger: 0.2, duration: 0.5 }, 
-      "-=0.3"
+      { opacity: 1, y: 0, duration: 0.8 }, 
+      "-=0.4"
+    )
+    .fromTo(buttonsRef.current, 
+      { opacity: 0, y: 20 }, 
+      { opacity: 1, y: 0, duration: 0.8 }, 
+      "-=0.4"
+    )
+    .fromTo(imageRef.current, 
+      { opacity: 0, scale: 0.9 }, 
+      { opacity: 1, scale: 1, duration: 1 }, 
+      "-=0.6"
     );
     
     return () => {
@@ -48,49 +46,49 @@ const HeroSection = () => {
   }, []);
   
   return (
-    <section id="home" ref={sectionRef} className="hero-container">
-      <div className="hero-left-bg"></div>
-      <div className="hero-right-bg"></div>
-      
-      <div className="hero-content">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 ref={titleRef} className="hero-title">
-              Data Science<br />
-              Student.
-            </h1>
-            <p ref={subtitleRef} className="hero-subtitle">
-              I like to craft AI solutions for real-world problems with great user experiences.
+    <section id="home" ref={sectionRef} className="min-h-screen flex items-center pt-20 pb-16">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 md:pr-10">
+            <p className="text-primary font-medium mb-4 text-lg">Hello there, I'm</p>
+            <h1 ref={headingRef} className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Yassine Erradouani</h1>
+            <p ref={textRef} className="text-xl md:text-2xl text-gray-600 mb-8">
+              A Data Science & Machine Learning student passionate about using <span className="text-primary font-medium">AI for real-world impact</span>.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-              <div ref={skillsRef1} className="text-white/90 text-sm">
-                <p className="mb-1 text-white/70">Highly skilled at</p>
-                <p>data analysis, machine learning models & AI Engineering.</p>
-              </div>
-              
-              <div ref={skillsRef2} className="text-white/90 text-sm">
-                <p className="mb-1 text-white/70">Proven experience building</p>
-                <p>impactful data science projects for real-world applications.</p>
-              </div>
+            <div ref={tagsRef} className="flex flex-wrap gap-3 mb-8">
+              <span className="bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm">Data Science</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm">Machine Learning</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm">AI Enthusiast</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm">Chess Analyzer</span>
+            </div>
+            
+            <div ref={buttonsRef} className="flex gap-4">
+              <Button 
+                className="bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2"
+                onClick={() => scrollToSection('projects')}
+              >
+                View Projects <i className="ri-arrow-right-line"></i>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full font-medium transition-all"
+                onClick={() => scrollToSection('contact')}
+              >
+                Contact Me
+              </Button>
             </div>
           </div>
           
-          <div ref={imageRef} className="hero-image-container">
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-              alt="Yassine Erradouani" 
-              className="hero-image w-full max-w-md mx-auto"
-            />
-            
-            <div ref={dotsRef1} className="hero-image-dots hero-image-dots-1"></div>
-            <div ref={dotsRef2} className="hero-image-dots hero-image-dots-2"></div>
-            
-            <div ref={line1Ref} className="hero-image-line hero-image-line-1">
-              <ZigZagLine stroke="white" strokeWidth={1.5} />
-            </div>
-            <div ref={line2Ref} className="hero-image-line hero-image-line-2">
-              <ZigZagLine stroke="white" strokeWidth={1.5} />
+          <div ref={imageRef} className="md:w-1/2 mt-12 md:mt-0">
+            <div className="relative">
+              <div className="absolute -top-10 -left-10 w-20 h-20 bg-primary bg-opacity-10 rounded-full"></div>
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent1 bg-opacity-10 rounded-full"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                alt="Yassine Erradouani" 
+                className="relative z-10 rounded-2xl shadow-xl object-cover h-[500px] w-full"
+              />
             </div>
           </div>
         </div>
