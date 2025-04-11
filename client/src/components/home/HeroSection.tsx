@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
@@ -57,10 +57,10 @@ const HeroSection = () => {
             </p>
             
             <div ref={tagsRef} className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-primary/20 text-primary font-medium border border-primary/30 px-3 py-1 rounded-full text-sm shadow-sm">Data Science</span>
-              <span className="bg-primary/20 text-primary font-medium border border-primary/30 px-3 py-1 rounded-full text-sm shadow-sm">Machine Learning</span>
-              <span className="bg-primary/20 text-primary font-medium border border-primary/30 px-3 py-1 rounded-full text-sm shadow-sm">AI Enthusiast</span>
-              <span className="bg-primary/20 text-primary font-medium border border-primary/30 px-3 py-1 rounded-full text-sm shadow-sm">Chess Analyzer</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Data Science</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Machine Learning</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">AI Enthusiast</span>
+              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Chess Analyzer</span>
             </div>
             
             <div ref={buttonsRef} className="flex gap-3">
@@ -82,38 +82,13 @@ const HeroSection = () => {
           
           <div ref={imageRef} className="md:w-2/5 mt-10 md:mt-0">
             <div className="relative max-w-sm mx-auto md:mx-0">
-              {/* Background elements */}
-              <div className="absolute -top-5 -left-5 w-16 h-16 bg-primary/20 rounded-full z-0"></div>
-              <div className="absolute -bottom-5 -right-5 w-24 h-24 bg-primary/15 rounded-full z-0"></div>
-              
-              {/* Image card with layered borders and hover effects */}
-              <div 
-                className="group relative rounded-2xl transition-all duration-300 ease-out hover:scale-[1.01] cursor-pointer"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px'
-                }}
-              >
-                {/* Shadow layers */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/30 to-primary/10 blur-md transform -translate-x-2 translate-y-2 -z-10"></div>
-                <div className="absolute inset-0 rounded-2xl bg-primary/5 -z-10"></div>
-                
-                {/* Borders */}
-                <div className="absolute inset-0 rounded-2xl border border-primary/20 z-10 transform group-hover:translate-z-10 transition-transform duration-300"></div>
-                <div className="absolute inset-[-3px] rounded-2xl border border-primary/10 z-0 group-hover:translate-z-5"></div>
-                
-                {/* Content */}
-                <div className="overflow-hidden rounded-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-                    alt="Yassine Erradouani" 
-                    className="relative rounded-2xl shadow-lg object-cover h-[380px] w-full transform transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  
-                  {/* Shine effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                </div>
-              </div>
+              <div className="absolute -top-5 -left-5 w-16 h-16 bg-primary bg-opacity-10 rounded-full"></div>
+              <div className="absolute -bottom-5 -right-5 w-24 h-24 bg-accent1 bg-opacity-10 rounded-full"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                alt="Yassine Erradouani" 
+                className="relative z-10 rounded-2xl shadow-xl object-cover h-[380px] w-full"
+              />
             </div>
           </div>
         </div>
