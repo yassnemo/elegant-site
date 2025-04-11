@@ -10,6 +10,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
+        'mono': ['Space Mono', 'monospace'],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -61,6 +65,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom colors for olaolu-like design
+        'hero-purple': '#5134DD',
+        'hero-green': '#C5F277',
       },
       keyframes: {
         "accordion-down": {
