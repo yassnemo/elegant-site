@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
@@ -11,7 +11,55 @@ const HeroSection = () => {
   const tagsRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   
+  // Handle image hover effect
+  useEffect(() => {
+    if (!imageWrapperRef.current) return;
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!imageWrapperRef.current) return;
+      
+      const rect = imageWrapperRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Normalize coordinates
+      const xPercent = x / rect.width;
+      const yPercent = y / rect.height;
+      
+      // Apply rotation (subtly)
+      gsap.to(imageWrapperRef.current, {
+        rotationY: (xPercent - 0.5) * 5, // -2.5 to 2.5 degrees
+        rotationX: (0.5 - yPercent) * 5, // -2.5 to 2.5 degrees
+        transformPerspective: 1000,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
+    };
+    
+    const handleMouseLeave = () => {
+      gsap.to(imageWrapperRef.current, {
+        rotationY: 0,
+        rotationX: 0,
+        duration: 0.6,
+        ease: 'power3.out'
+      });
+    };
+    
+    imageWrapperRef.current.addEventListener('mousemove', handleMouseMove);
+    imageWrapperRef.current.addEventListener('mouseleave', handleMouseLeave);
+    
+    return () => {
+      if (imageWrapperRef.current) {
+        imageWrapperRef.current.removeEventListener('mousemove', handleMouseMove);
+        imageWrapperRef.current.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
+  
+  // Animation sequence
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
@@ -57,10 +105,10 @@ const HeroSection = () => {
             </p>
             
             <div ref={tagsRef} className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Data Science</span>
-              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Machine Learning</span>
-              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">AI Enthusiast</span>
-              <span className="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Chess Analyzer</span>
+              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Data Science</span>
+              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Machine Learning</span>
+              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">AI Enthusiast</span>
+              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Chess Analyzer</span>
             </div>
             
             <div ref={buttonsRef} className="flex gap-3">
@@ -81,14 +129,34 @@ const HeroSection = () => {
           </div>
           
           <div ref={imageRef} className="md:w-2/5 mt-10 md:mt-0">
-            <div className="relative max-w-sm mx-auto md:mx-0">
-              <div className="absolute -top-5 -left-5 w-16 h-16 bg-primary bg-opacity-10 rounded-full"></div>
-              <div className="absolute -bottom-5 -right-5 w-24 h-24 bg-accent1 bg-opacity-10 rounded-full"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-                alt="Yassine Erradouani" 
-                className="relative z-10 rounded-2xl shadow-xl object-cover h-[380px] w-full"
-              />
+            {/* Brittany Chiang style image with gradient border effect */}
+            <div 
+              ref={imageWrapperRef}
+              className="max-w-sm mx-auto md:mx-0 relative group"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {/* Gradient Border Effect */}
+              <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-primary to-primary/50 opacity-75 blur-sm group-hover:opacity-100 transition duration-300"></div>
+              
+              {/* Main Image Container */}
+              <div className="relative bg-gray-900 p-1 rounded-lg">
+                {/* Color Overlay */}
+                <div 
+                  className={`absolute inset-0 rounded-lg bg-primary opacity-20 mix-blend-multiply z-20 transition-opacity duration-300 ${isImageLoaded ? 'opacity-20' : 'opacity-0'}`}
+                ></div>
+                
+                {/* Image with grainy texture */}
+                <div className="relative rounded-lg overflow-hidden">
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiPjwvcmVjdD4KPC9zdmc+')] opacity-20 z-10"></div>
+                  
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                    alt="Yassine Erradouani" 
+                    className="relative z-0 object-cover h-[380px] w-full grayscale brightness-75 contrast-125 rounded-lg transition-all duration-300"
+                    onLoad={() => setIsImageLoaded(true)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
