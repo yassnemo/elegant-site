@@ -117,28 +117,30 @@ const ProjectsPage = () => {
                         
                         <div className="flex space-x-3">
                           {project.github && (
-                            <a 
-                              href={project.github}
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-gray-500 hover:text-primary transition-colors"
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <span 
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                window.open(project.github, '_blank', 'noopener,noreferrer');
+                              }}
+                              className="text-gray-500 hover:text-primary transition-colors cursor-pointer"
                               aria-label="GitHub repository"
                             >
                               <i className="ri-github-fill text-xl"></i>
-                            </a>
+                            </span>
                           )}
                           {project.demo && (
-                            <a 
-                              href={project.demo}
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-gray-500 hover:text-primary transition-colors"
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <span 
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                window.open(project.demo, '_blank', 'noopener,noreferrer');
+                              }}
+                              className="text-gray-500 hover:text-primary transition-colors cursor-pointer"
                               aria-label="Live demo"
                             >
                               <i className="ri-external-link-line text-xl"></i>
-                            </a>
+                            </span>
                           )}
                         </div>
                       </div>

@@ -79,7 +79,7 @@ const BlogPostPage = () => {
                 <span className="mx-2">•</span>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag: string, idx: number) => (
-                    <span key={idx} className="bg-primary bg-opacity-10 text-primary text-xs px-3 py-1 rounded-full">
+                    <span key={idx} className="bg-primary text-white text-xs px-3 py-1 rounded-full">
                       {tag}
                     </span>
                   ))}

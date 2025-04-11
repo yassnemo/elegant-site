@@ -93,7 +93,7 @@ const ProjectDetailPage = () => {
                       <h4 className="text-sm font-medium text-gray-500">TECHNOLOGIES</h4>
                       <div className="flex flex-wrap gap-2 mt-1">
                         {project.technologies.map((tech: string, i: number) => (
-                          <span key={i} className="bg-primary bg-opacity-10 text-primary text-xs px-2 py-1 rounded-md">
+                          <span key={i} className="bg-primary text-white text-xs px-2 py-1 rounded-md">
                             {tech}
                           </span>
                         ))}

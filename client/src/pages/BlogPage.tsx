@@ -78,7 +78,7 @@ const BlogPage = () => {
                     {post.tags.map((tag, i) => (
                       <span 
                         key={i} 
-                        className="bg-primary bg-opacity-10 text-primary text-xs px-3 py-1 rounded-full"
+                        className="bg-primary text-white text-xs px-3 py-1 rounded-full"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
