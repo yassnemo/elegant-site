@@ -11,7 +11,9 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground cursor-none overflow-x-hidden;
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    /* Default cursor is visible - CustomCursor will handle hiding it after page loads */
+    cursor: auto;
   }
 
   html {
