@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
+import myImage from '@/assets/me.jpg';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -145,14 +146,14 @@ const HeroSection = () => {
                   className={`absolute inset-0 rounded-lg bg-primary opacity-20 mix-blend-multiply z-20 transition-opacity duration-300 ${isImageLoaded ? 'opacity-20' : 'opacity-0'}`}
                 ></div>
                 
-                {/* Image with grainy texture */}
-                <div className="relative rounded-lg overflow-hidden">
+                {/* Image with grainy texture – apply custom hover effect */}
+                <div className="hero-image-container relative rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiPjwvcmVjdD4KPC9zdmc+')] opacity-20 z-10"></div>
                   
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                    src={myImage} 
                     alt="Yassine Erradouani" 
-                    className="relative z-0 object-cover h-[380px] w-full grayscale brightness-75 contrast-125 rounded-lg transition-all duration-300"
+                    className="relative z-0 object-cover h-[380px] w-full rounded-lg transition-all duration-300"
                     onLoad={() => setIsImageLoaded(true)}
                   />
                 </div>
