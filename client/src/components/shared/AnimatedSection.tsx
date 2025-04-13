@@ -52,7 +52,7 @@ const AnimatedSection = ({
     <section 
       ref={sectionRef}
       id={id} 
-      className={cn('py-20', className)}
+      className={cn('min-h-[90vh] py-8', className)}
     >
       {children}
     </section>

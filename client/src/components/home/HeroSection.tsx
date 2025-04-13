@@ -3,7 +3,6 @@ import { Link } from 'wouter';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
-import myImage from '@/assets/me.jpg';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -95,10 +94,10 @@ const HeroSection = () => {
   }, []);
   
   return (
-    <section id="home" ref={sectionRef} className="min-h-[85vh] flex items-center pt-16 pb-12">
+    <section id="home" ref={sectionRef} className="min-h-screen flex items-center pt-32 pb-16 relative">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-3/5 md:pr-10">
+          <div className="md:w-3/5 md:pl-12 md:pr-10">
             <p className="text-primary font-medium mb-3 text-lg">Hello there, I'm</p>
             <h1 ref={headingRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Yassine Erradouani</h1>
             <p ref={textRef} className="text-lg md:text-xl text-gray-600 mb-6">
@@ -136,27 +135,13 @@ const HeroSection = () => {
               className="max-w-sm mx-auto md:mx-0 relative group"
               style={{ transformStyle: 'preserve-3d' }}
             >
-              {/* Gradient Border Effect */}
-              <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-primary to-primary/50 opacity-75 blur-sm group-hover:opacity-100 transition duration-300"></div>
-              
-              {/* Main Image Container */}
-              <div className="relative bg-gray-900 p-1 rounded-lg">
-                {/* Color Overlay */}
-                <div 
-                  className={`absolute inset-0 rounded-lg bg-primary opacity-20 mix-blend-multiply z-20 transition-opacity duration-300 ${isImageLoaded ? 'opacity-20' : 'opacity-0'}`}
-                ></div>
-                
-                {/* Image with grainy texture – apply custom hover effect */}
-                <div className="hero-image-container relative rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiPjwvcmVjdD4KPC9zdmc+')] opacity-20 z-10"></div>
-                  
-                  <img 
-                    src={myImage} 
-                    alt="Yassine Erradouani" 
-                    className="relative z-0 object-cover h-[380px] w-full rounded-lg transition-all duration-300"
-                    onLoad={() => setIsImageLoaded(true)}
-                  />
-                </div>
+              <div className="relative rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                  alt="Yassine Erradouani" 
+                  className="object-cover h-[380px] w-full rounded-lg"
+                  onLoad={() => setIsImageLoaded(true)}
+                />
               </div>
             </div>
           </div>

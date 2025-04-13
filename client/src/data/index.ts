@@ -177,7 +177,21 @@ export const books = [
     coverImage: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
     rating: 5,
     quote: "A fascinating exploration of how we think and make decisions.",
-    reviewLink: 'https://example.com/thinking-fast-slow-review'
+    review: {
+      summary: "Kahneman's masterpiece is a profound exploration of the two systems that drive our thinking: the fast, intuitive System 1 and the slow, deliberate System 2. Through decades of groundbreaking research, he reveals how our decision-making processes are shaped by these systems and how they sometimes lead us astray.",
+      keyTakeaways: [
+        "Our minds operate using two distinct systems: fast intuitive thinking and slow deliberate reasoning",
+        "Cognitive biases systematically affect our decision-making in predictable ways",
+        "Understanding these biases can help us make better decisions and avoid common pitfalls",
+        "The 'experiencing self' and the 'remembering self' evaluate situations differently"
+      ],
+      favoriteQuotes: [
+        "A reliable way to make people believe in falsehoods is frequent repetition, because familiarity is not easily distinguished from truth.",
+        "Intelligence is not only the ability to reason; it is also the ability to find relevant material in memory and to deploy attention when needed."
+      ],
+      personalImpact: "This book fundamentally changed how I think about thinking itself. As a developer working in AI and machine learning, understanding these cognitive biases has been invaluable in designing better systems and making more rational decisions in both my professional and personal life.",
+      recommendations: "Essential reading for anyone interested in psychology, behavioral economics, or improving their decision-making process. Particularly valuable for those working in fields requiring complex problem-solving or system design."
+    }
   },
   {
     title: 'Hands-On Machine Learning',

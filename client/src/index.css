@@ -11,9 +11,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
-    /* Default cursor is visible - CustomCursor will handle hiding it after page loads */
-    cursor: auto;
+    @apply font-sans antialiased bg-background text-foreground cursor-none overflow-x-hidden;
   }
 
   html {
@@ -31,6 +29,16 @@
     @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-primary transition-all duration-300 ease-in-out;
   }
   
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0; }
+}
+
+.animate-scroll {
+  animation: scroll 1.5s ease-in-out infinite;
+}
+
   .nav-link:hover::after, .nav-link.active::after {
     @apply w-full;
   }

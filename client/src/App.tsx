@@ -9,6 +9,7 @@ import ProjectDetailPage from "@/pages/ProjectDetailPage";
 import BlogPage from "@/pages/BlogPage";
 import BlogPostPage from "@/pages/BlogPostPage";
 import BookshelfPage from "@/pages/BookshelfPage";
+import BookReviewPage from "@/pages/BookReviewPage";
 import ResumePage from "@/pages/ResumePage";
 import ContactPage from "@/pages/ContactPage";
 import CustomCursor from "@/components/layout/CustomCursor";
@@ -33,6 +34,7 @@ function Router() {
           <Route path="/blog" component={BlogPage} />
           <Route path="/blog/:slug" component={BlogPostPage} />
           <Route path="/bookshelf" component={BookshelfPage} />
+          <Route path="/bookshelf/:slug" component={BookReviewPage} />
           <Route path="/resume" component={ResumePage} />
           <Route path="/contact" component={ContactPage} />
           <Route component={NotFound} />
