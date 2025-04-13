@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { setupIntersectionObserver } from '@/lib/utils';
@@ -51,16 +52,12 @@ const BookshelfPage = () => {
                     ))}
                   </div>
                   <p className="text-gray-500 text-xs text-center italic">"{book.quote}"</p>
-                  {book.reviewLink && (
-                    <a 
-                      href={book.reviewLink}
-                      className="mt-3 text-primary font-medium hover:underline text-sm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Read My Review
-                    </a>
-                  )}
+                  <Link 
+                    href={`/bookshelf/${book.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="mt-3 text-primary font-medium hover:underline text-sm"
+                  >
+                    Read My Review
+                  </Link>
                 </div>
               </div>
             ))}
