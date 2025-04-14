@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
+import emailjs from '@emailjs/browser';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -19,9 +19,15 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
+// Use environment variables for EmailJS credentials
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -36,22 +42,25 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // For now, we'll just simulate a successful form submission
-      // In a real app, we'd send this data to the backend
+      // Send email using EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        EMAILJS_PUBLIC_KEY
+      );
       
-      // Uncomment this to actually send the form data to the server
-      // await apiRequest('POST', '/api/contact', data);
-      
-      // For this demo, we'll just simulate a success response
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-        variant: "default",
-      });
-      
-      form.reset();
+      if (result.status === 200) {
+        toast({
+          title: "Message sent!",
+          description: "Thanks for reaching out. I'll get back to you soon.",
+          variant: "default",
+        });
+        
+        form.reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
       toast({
         title: "Error sending message",
@@ -76,7 +85,7 @@ const ContactSection = () => {
           <div className="section-transition">
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
                     control={form.control}
                     name="name"
@@ -88,6 +97,7 @@ const ContactSection = () => {
                             placeholder="Your name" 
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-20 transition-all outline-none" 
                             {...field} 
+                            name="user_name"
                           />
                         </FormControl>
                         <FormMessage />
@@ -107,6 +117,7 @@ const ContactSection = () => {
                             type="email" 
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-20 transition-all outline-none"
                             {...field} 
+                            name="user_email"
                           />
                         </FormControl>
                         <FormMessage />
@@ -126,6 +137,7 @@ const ContactSection = () => {
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-20 transition-all outline-none" 
                             rows={5}
                             {...field} 
+                            name="message"
                           />
                         </FormControl>
                         <FormMessage />
@@ -153,7 +165,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1">Email</h3>
-                  <p className="text-gray-600">yassine.erradouani@example.com</p>
+                  <p className="text-gray-600">yassine.erradouani@protonmail.com</p>
                   <p className="text-gray-500 text-sm">I typically respond within 24 hours.</p>
                 </div>
               </div>

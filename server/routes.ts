@@ -1,6 +1,16 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+// Import nodemailer for email functionality
+import nodemailer from 'nodemailer';
+// Import email configuration
+import { emailConfig } from './config/email';
+
+// Create a transporter for email sending
+const transporter = nodemailer.createTransport({
+  service: emailConfig.service,
+  auth: emailConfig.auth,
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact API endpoint
@@ -13,12 +23,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: 'Name, email, and message are required' });
       }
       
-      // In a real app, you might want to:
-      // 1. Send an email notification
-      // 2. Store the contact message in a database
-      // 3. Set up some spam protection
+      // Prepare email
+      const mailOptions = {
+        from: emailConfig.from,
+        to: emailConfig.to,
+        subject: subject || `New contact form submission from ${name}`,
+        replyTo: email,
+        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      };
       
-      // For this demo, we'll just return a success response
+      // Send email
+      await transporter.sendMail(mailOptions);
+      
       return res.status(200).json({ 
         success: true, 
         message: 'Message received! I will get back to you soon.'
