@@ -36,7 +36,8 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
+// Modified to support both direct execution and import from Vercel serverless function
+const setupServer = async () => {
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -55,12 +56,23 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
+  
+  return app;
+};
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
-  app.listen(port, 'localhost', () => {
-    console.log(`Server running on http://localhost:${port}`);
-  });
-})();
+// For Vercel serverless functions
+export default setupServer();
+
+// For local development
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  (async () => {
+    const appInstance = await setupServer();
+    // ALWAYS serve the app on port 5000
+    // this serves both the API and the client.
+    // It is the only port that is not firewalled.
+    const port = 5000;
+    appInstance.listen(port, 'localhost', () => {
+      console.log(`Server running on http://localhost:${port}`);
+    });
+  })();
+}
