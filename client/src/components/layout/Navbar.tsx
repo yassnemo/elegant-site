@@ -50,7 +50,8 @@ const Navbar = () => {
                   "text-base font-medium transition-colors hover:text-primary relative",
                   location === link.href ? "text-primary after:scale-x-100" : "text-gray-600 after:scale-x-0",
                   "after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-primary",
-                  "after:origin-left after:transition-transform after:duration-300"
+                  "after:origin-left after:transition-transform after:duration-300",
+                  "hover:after:scale-x-100" // Add hover effect for the underline
                 )}
               >
                 {link.label}
