@@ -16,7 +16,8 @@ import CertificatesPage from "@/pages/CertificatesPage";
 import CustomCursor from "@/components/layout/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { useEffect } from "react";
+import LoadingScreen from "@/components/layout/LoadingScreen";
+import { useEffect, useState } from "react";
 
 function Router() {
   // Scroll to top on route change
@@ -48,11 +49,28 @@ function Router() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate content loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500); // Show loading screen for 2.5 seconds
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <CustomCursor />
-      <Router />
-      <Toaster />
+      {isLoading ? (
+        <LoadingScreen duration={2000} />
+      ) : (
+        <>
+          <Router />
+          <Toaster />
+        </>
+      )}
     </QueryClientProvider>
   );
 }
