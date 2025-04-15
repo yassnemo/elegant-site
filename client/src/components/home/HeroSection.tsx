@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
+import profileImage from '@/assets/me.jpg';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -144,7 +145,7 @@ const HeroSection = () => {
               {/* Main image - with color overlay that disappears on hover */}
               <div className="relative z-10 bg-white transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:-translate-x-0.5">
                 <img 
-                  src="/src/assets/me.jpg" 
+                  src={profileImage} 
                   alt="Yassine Erradouani" 
                   className="object-cover h-[380px] w-full"
                   onLoad={() => setIsImageLoaded(true)}
