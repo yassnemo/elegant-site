@@ -40,9 +40,9 @@ const LoadingScreen = ({ duration = 2000 }: LoadingScreenProps) => {
                 viewBox="0 0 100 100" 
                 className="w-full h-full"
               >
-                {/* Y letter fill */}
+                {/* Y letter fill - using the same path from favicon */}
                 <motion.path
-                  d="M30,15 L50,55 L70,15 L80,15 L55,60 L55,85 L45,85 L45,60 L20,15 Z"
+                  d="M28 22C30 22 32 23 33 25L50 58L67 25C68 23 70 22 72 22C75 22 78 24 78 27C78 28 77.5 29 77 30L57 62C56 64 55.5 65 55.5 67L55.5 79C55.5 82 53 85 50 85C47 85 45 82 45 79L45 67C45 65 44.5 64 44 62L24 30C23.5 29 23 28 23 27C23 24 25 22 28 22Z"
                   fill="#ABF312"
                   initial={{ fillOpacity: 0 }}
                   animate={{ fillOpacity: 1 }}
@@ -51,7 +51,7 @@ const LoadingScreen = ({ duration = 2000 }: LoadingScreenProps) => {
                 
                 {/* Animated drawing outline */}
                 <motion.path
-                  d="M30,15 L50,55 L70,15 L80,15 L55,60 L55,85 L45,85 L45,60 L20,15 Z"
+                  d="M28 22C30 22 32 23 33 25L50 58L67 25C68 23 70 22 72 22C75 22 78 24 78 27C78 28 77.5 29 77 30L57 62C56 64 55.5 65 55.5 67L55.5 79C55.5 82 53 85 50 85C47 85 45 82 45 79L45 67C45 65 44.5 64 44 62L24 30C23.5 29 23 28 23 27C23 24 25 22 28 22Z"
                   fill="transparent"
                   stroke="#000"
                   strokeWidth="2"
@@ -67,7 +67,7 @@ const LoadingScreen = ({ duration = 2000 }: LoadingScreenProps) => {
                 
                 {/* Animated continuous moving outline */}
                 <motion.path
-                  d="M30,15 L50,55 L70,15 L80,15 L55,60 L55,85 L45,85 L45,60 L20,15 Z"
+                  d="M28 22C30 22 32 23 33 25L50 58L67 25C68 23 70 22 72 22C75 22 78 24 78 27C78 28 77.5 29 77 30L57 62C56 64 55.5 65 55.5 67L55.5 79C55.5 82 53 85 50 85C47 85 45 82 45 79L45 67C45 65 44.5 64 44 62L24 30C23.5 29 23 28 23 27C23 24 25 22 28 22Z"
                   fill="transparent"
                   stroke="#000"
                   strokeWidth="2"
