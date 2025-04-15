@@ -276,3 +276,57 @@ export const experience = [
     ]
   }
 ];
+
+// Certificate data
+export const certificates = [
+  {
+    id: 1,
+    title: "Machine Learning Specialization",
+    organization: "Stanford University & DeepLearning.AI",
+    date: "January 2024",
+    image: "https://images.unsplash.com/photo-1594904351111-a072f80b1a71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    description: "Comprehensive machine learning training covering supervised learning algorithms, neural networks, and practical applications.",
+    credentials: "ML-CERT-2024-01",
+    link: "https://www.coursera.org/account/accomplishments/verify/ML-CERT-2024-01",
+  },
+  {
+    id: 2,
+    title: "Data Science Professional Certificate",
+    organization: "IBM",
+    date: "October 2023",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    description: "Professional-level training in data science methodologies, tools, and practices for real-world applications.",
+    credentials: "DS-PRO-2023-10",
+    link: "https://www.coursera.org/account/accomplishments/professional-cert/DS-PRO-2023-10",
+  },
+  {
+    id: 3,
+    title: "TensorFlow Developer Certificate",
+    organization: "Google",
+    date: "March 2024",
+    image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    description: "Certification for proficiency in building TensorFlow models for computer vision, NLP, and time series applications.",
+    credentials: "TF-DEV-2024-03",
+    link: "https://www.tensorflow.org/certificate/TF-DEV-2024-03",
+  },
+  {
+    id: 4,
+    title: "Deep Learning Specialization",
+    organization: "DeepLearning.AI",
+    date: "August 2023",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", 
+    description: "Five-course specialization covering neural networks, deep learning architecture optimization, and practical projects.",
+    credentials: "DL-SPEC-2023-08",
+    link: "https://www.coursera.org/account/accomplishments/specialization/DL-SPEC-2023-08",
+  },
+  {
+    id: 5,
+    title: "AWS Certified Machine Learning - Specialty",
+    organization: "Amazon Web Services",
+    date: "December 2023",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    description: "Industry certification validating expertise in designing, implementing, and deploying ML solutions on the AWS cloud.",
+    credentials: "AWS-ML-2023-12",
+    link: "https://www.aws.training/certification/verify/AWS-ML-2023-12",
+  }
+];

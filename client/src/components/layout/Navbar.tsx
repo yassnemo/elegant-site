@@ -21,6 +21,7 @@ const Navbar = () => {
     { href: '/projects', label: 'Projects' },
     { href: '/blog', label: 'Blog' },
     { href: '/bookshelf', label: 'Bookshelf' },
+    { href: '/certificates', label: 'Certificates' },
     { href: '/resume', label: 'Resume' },
     { href: '/contact', label: 'Contact' },
   ];

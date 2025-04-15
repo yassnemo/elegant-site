@@ -68,7 +68,7 @@ const ProjectsPage = () => {
           </div>
           
           {/* Projects grid with hover effects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-8 max-w-7xl mx-auto">
             {filteredProjects.map((project, index) => (
               <Link 
                 key={index} 
@@ -98,7 +98,7 @@ const ProjectsPage = () => {
                         {project.technologies.map((tech, i) => (
                           <span 
                             key={i} 
-                            className="bg-primary bg-opacity-10 text-primary text-xs px-3 py-1 rounded-full cursor-pointer"
+                            className="bg-[#ABF312] text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer font-semibold"
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();

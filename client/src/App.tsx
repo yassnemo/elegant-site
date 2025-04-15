@@ -12,6 +12,7 @@ import BookshelfPage from "@/pages/BookshelfPage";
 import BookReviewPage from "@/pages/BookReviewPage";
 import ResumePage from "@/pages/ResumePage";
 import ContactPage from "@/pages/ContactPage";
+import CertificatesPage from "@/pages/CertificatesPage";
 import CustomCursor from "@/components/layout/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -36,6 +37,7 @@ function Router() {
           <Route path="/bookshelf" component={BookshelfPage} />
           <Route path="/bookshelf/:slug" component={BookReviewPage} />
           <Route path="/resume" component={ResumePage} />
+          <Route path="/certificates" component={CertificatesPage} />
           <Route path="/contact" component={ContactPage} />
           <Route component={NotFound} />
         </Switch>
