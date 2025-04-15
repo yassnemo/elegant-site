@@ -129,19 +129,31 @@ const HeroSection = () => {
           </div>
           
           <div ref={imageRef} className="md:w-2/5 mt-10 md:mt-0">
-            {/* Brittany Chiang style image with gradient border effect */}
+            {/* Image container with Brittany Chiang-style hover effect */}
             <div 
               ref={imageWrapperRef}
               className="max-w-sm mx-auto md:mx-0 relative group"
               style={{ transformStyle: 'preserve-3d' }}
             >
-              <div className="relative rounded-lg overflow-hidden">
+              {/* Square outline frame - with custom border thickness */}
+              <div 
+                className="absolute top-4 left-5 w-full h-full border-[#ABF312] z-0 transition-all duration-300 ease-out group-hover:top-5 group-hover:left-6"
+                style={{ borderWidth: '2.5px' }}
+              ></div>
+              
+              {/* Main image - with color overlay that disappears on hover */}
+              <div className="relative z-10 bg-white transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:-translate-x-0.5">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                  src="/src/assets/me.jpg" 
                   alt="Yassine Erradouani" 
-                  className="object-cover h-[380px] w-full rounded-lg"
+                  className="object-cover h-[380px] w-full"
                   onLoad={() => setIsImageLoaded(true)}
                 />
+                {/* Green overlay layer that disappears on hover */}
+                <div 
+                  className="absolute inset-0 bg-[#ABF312] opacity-30 transition-opacity duration-300 ease-out group-hover:opacity-0"
+                  style={{ mixBlendMode: 'multiply' }}
+                ></div>
               </div>
             </div>
           </div>
