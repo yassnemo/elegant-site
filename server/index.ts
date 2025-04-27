@@ -38,41 +38,52 @@ app.use((req, res, next) => {
 
 // Modified to support both direct execution and import from Vercel serverless function
 const setupServer = async () => {
-  const server = await registerRoutes(app);
+  // Register routes and get the HTTP server instance
+  const httpServer = await registerRoutes(app);
 
+  // Error handling middleware
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // Setup Vite in development, or serve static assets in production
   if (app.get("env") === "development") {
-    await setupVite(app, server);
+    await setupVite(app, httpServer);
   } else {
     serveStatic(app);
   }
-  
-  return app;
+
+  // Return the underlying HTTP server for listening
+  return httpServer;
 };
 
 // For Vercel serverless functions
-export default setupServer();
+// Exported promise resolves to HTTP server (useful for local dev)
+export default setupServer;
 
-// For local development
+// For local development: use configurable port/host, defaulting to 5173 (Vite default) on IPv4
 if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
   (async () => {
-    const appInstance = await setupServer();
-    // ALWAYS serve the app on port 5000
-    // this serves both the API and the client.
-    // It is the only port that is not firewalled.
-    const port = 5000;
-    appInstance.listen(port, 'localhost', () => {
-      console.log(`Server running on http://localhost:${port}`);
-    });
+    // Initialize server and then start listening
+    const httpServer = await setupServer();
+    // Bind to IPv4 only to avoid IPv6 address in use errors
+    const host = process.env.HOST || "127.0.0.1";
+    const port = parseInt(process.env.PORT || "5173", 10);
+    httpServer.listen(port, host)
+      .on('listening', () => {
+        console.log(`Server running and proxying Vite on http://${host}:${port}`);
+        console.log(`Open your browser and navigate to http://localhost:${port}`);
+      })
+      .on('error', (err: any) => {
+        if (err.code === 'EADDRINUSE') {
+          console.error(`Port ${port} is already in use. Please free it or set a different PORT.`);
+        } else {
+          console.error('Server error:', err);
+        }
+        process.exit(1);
+      });
   })();
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,25 +31,25 @@ const Navbar = () => {
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white/95 shadow-sm" : "bg-white/50",
+        isScrolled ? "bg-white/95 shadow-sm dark:bg-gray-900/95" : "bg-white/50 dark:bg-gray-900/50",
         "backdrop-blur-md"
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold font-serif">
+          <Link href="/" className="text-2xl font-bold font-serif text-gray-900 dark:text-white">
             Y<span className="text-primary">.</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
                   "text-base font-medium transition-colors hover:text-primary relative",
-                  location === link.href ? "text-primary after:scale-x-100" : "text-gray-600 after:scale-x-0",
+                  location === link.href ? "text-primary after:scale-x-100" : "text-gray-600 dark:text-gray-300 after:scale-x-0",
                   "after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-primary",
                   "after:origin-left after:transition-transform after:duration-300",
                   "hover:after:scale-x-100" // Add hover effect for the underline
@@ -57,18 +58,23 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <i className={`ri-${mobileMenuOpen ? 'close' : 'menu'}-line text-xl`}></i>
-          </Button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <i className={`ri-${mobileMenuOpen ? 'close' : 'menu'}-line text-xl`}></i>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -84,10 +90,10 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors w-full text-center",
                   location === link.href 
                     ? "bg-primary/10 text-primary" 
-                    : "text-gray-600 hover:bg-gray-50/80 hover:text-primary"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50/80 dark:hover:bg-gray-800/80 hover:text-primary"
                 )}
                 onClick={() => setMobileMenuOpen(false)}
               >

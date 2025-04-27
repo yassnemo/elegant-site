@@ -18,7 +18,7 @@ const BookshelfSection = () => {
           {books.slice(0, 4).map((book, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow section-transition"
+              className="bg-white dark:bg-[#112240] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow section-transition"
             >
               <div className="p-4 flex flex-col items-center">
                 <div className="w-40 h-56 mb-4 overflow-hidden rounded shadow-sm">
@@ -28,8 +28,8 @@ const BookshelfSection = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-lg font-bold text-center">{book.title}</h3>
-                <p className="text-gray-600 text-sm text-center mb-2">{book.author}</p>
+                <h3 className="text-lg font-bold text-center dark:text-gray-200">{book.title}</h3>
+                <p className="text-gray-600 dark:text-[#8892B0] text-sm text-center mb-2">{book.author}</p>
                 <div className="flex items-center mb-2">
                   {[...Array(5)].map((_, i) => (
                     <i 
@@ -38,7 +38,7 @@ const BookshelfSection = () => {
                     ></i>
                   ))}
                 </div>
-                <p className="text-gray-500 text-xs text-center italic">"{book.quote}"</p>
+                <p className="text-gray-500 dark:text-[#8892B0] text-xs text-center italic">"{book.quote}"</p>
               </div>
             </div>
           ))}
@@ -46,7 +46,7 @@ const BookshelfSection = () => {
         
         <div className="flex items-center justify-center mt-12">
           <Link href="/bookshelf">
-            <Button variant="outline" className="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+            <Button variant="outline" className="border border-primary dark:border-[#64FFDA] text-primary dark:text-[#64FFDA] hover:bg-primary dark:hover:bg-[#64FFDA] hover:text-white dark:hover:text-[#0A192F] px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               View Full Reading List <i className="ri-arrow-right-line"></i>
             </Button>
           </Link>

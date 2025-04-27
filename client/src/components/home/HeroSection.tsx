@@ -101,27 +101,27 @@ const HeroSection = () => {
           <div className="md:w-3/5 md:pl-12 md:pr-10">
             <p className="text-primary font-medium mb-3 text-lg">Hello there, I'm</p>
             <h1 ref={headingRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Yassine Erradouani</h1>
-            <p ref={textRef} className="text-lg md:text-xl text-gray-600 mb-6">
+            <p ref={textRef} className="text-lg md:text-xl mb-6" style={{ color: "#8892B0" }}>
               A Data Science & Machine Learning student passionate about using <span className="text-primary font-medium">AI for real-world impact</span>.
             </p>
             
             <div ref={tagsRef} className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Data Science</span>
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Machine Learning</span>
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">AI Enthusiast</span>
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Chess Analyzer</span>
+              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Science</span>
+              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Analysis</span>
+              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Engineering</span>
+              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
             </div>
             
             <div ref={buttonsRef} className="flex gap-3">
               <Button 
-                className="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full font-medium transition-all flex items-center gap-2 text-sm"
+                className="bg-[#64FFDA] hover:bg-opacity-90 text-[#0A192F] px-5 py-2 rounded-full font-medium transition-all flex items-center gap-2 text-sm"
                 onClick={() => scrollToSection('projects')}
               >
                 View Projects <i className="ri-arrow-right-line"></i>
               </Button>
               <Button 
                 variant="outline" 
-                className="border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-full font-medium transition-all text-sm"
+                className="border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#0A192F] px-5 py-2 rounded-full font-medium transition-all text-sm"
                 onClick={() => scrollToSection('contact')}
               >
                 Contact Me

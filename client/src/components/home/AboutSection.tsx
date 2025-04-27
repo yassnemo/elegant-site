@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const AboutSection = () => {
   return (
-    <AnimatedSection className="py-20 bg-white">
+    <AnimatedSection className="py-20 bg-white dark:bg-background">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="md:w-2/5 section-transition">
@@ -16,30 +16,30 @@ const AboutSection = () => {
           </div>
           
           <div className="md:w-3/5 section-transition">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-            <p className="text-gray-600 mb-6 text-lg">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 dark:text-gray-200">About Me</h2>
+            <p className="text-gray-600 dark:text-[#8892B0] mb-6 text-lg">
               I'm a 21-year-old second-year Data Science & Machine Learning student with a passion for leveraging AI to create meaningful impact. Beyond coding and algorithms, I enjoy teaching, analyzing chess games with AI, and exploring the intersections of psychology, history, and human behavior.
             </p>
             
-            <p className="text-gray-600 mb-8 text-lg">
+            <p className="text-gray-600 dark:text-[#8892B0] mb-8 text-lg">
               My technical journey has led me to work on advanced projects like fraud detection systems and personalized news aggregators, constantly pushing the boundaries of what's possible with data and machine learning.
             </p>
             
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div>
-                <h3 className="text-lg font-semibold mb-3">Education</h3>
-                <p className="text-gray-600">Data Science & ML</p>
-                <p className="text-gray-500 text-sm">2022 - Present</p>
+                <h3 className="text-lg font-semibold mb-3 dark:text-gray-200">Education</h3>
+                <p className="text-gray-600 dark:text-[#8892B0]">Data Science & ML</p>
+                <p className="text-gray-500 dark:text-[#8892B0] text-sm">2022 - Present</p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-3">Location</h3>
-                <p className="text-gray-600">Morocco</p>
-                <p className="text-gray-500 text-sm">Open to Remote Opportunities</p>
+                <h3 className="text-lg font-semibold mb-3 dark:text-gray-200">Location</h3>
+                <p className="text-gray-600 dark:text-[#8892B0]">Morocco</p>
+                <p className="text-gray-500 dark:text-[#8892B0] text-sm">Open to Remote Opportunities</p>
               </div>
             </div>
             
-            <Link href="/resume" className="inline-flex items-center text-primary hover:underline font-medium">
+            <Link href="/resume" className="inline-flex items-center text-primary dark:text-[#64FFDA] hover:underline font-medium">
               View My Resume <i className="ri-arrow-right-line ml-2"></i>
             </Link>
           </div>

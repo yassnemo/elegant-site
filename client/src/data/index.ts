@@ -56,8 +56,9 @@ export const projects = [
   }
 ];
 
-// Blog post data
-export const blogPosts = [
+// Blog post data - For static site generation, we'll use this as fallback
+// During development or if markdown files are unavailable
+export const blogPostsFallback = [
   {
     title: 'The Future of Ethical AI Development',
     slug: 'ethical-ai-development',
@@ -168,6 +169,47 @@ export const blogPosts = [
     `
   }
 ];
+
+// A simple function to estimate reading time (words per minute)
+const estimateReadingTime = (text: string): string => {
+  const wordsPerMinute = 200; // Average reading speed
+  const words = text.split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+};
+
+// Blog post data - Use fallback data directly for now
+let loadedBlogPosts: BlogPost[] = [];
+try {
+  console.warn('Using fallback blog data. Markdown loading should happen server-side or at build time.');
+  loadedBlogPosts = blogPostsFallback.map(post => ({
+    ...post,
+    readingTime: estimateReadingTime(post.content) 
+  }));
+} catch (error) {
+  console.error('Error setting up blog posts:', error);
+  // Fallback in case of unexpected errors during mapping
+  loadedBlogPosts = blogPostsFallback.map(post => ({
+    ...post,
+    readingTime: estimateReadingTime(post.content) 
+  }));
+}
+
+// Define BlogPost type locally or import from a shared types file if available
+// For now, let's assume BlogPost is implicitly defined by blogPostsFallback structure
+// Or define it simply:
+interface BlogPost {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+  content: string;
+  readingTime: string;
+}
+
+// Export the correctly loaded and typed blog posts
+export const blogPosts: BlogPost[] = loadedBlogPosts;
 
 // Book data
 export const books = [

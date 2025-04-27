@@ -18,6 +18,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import { useEffect, useState } from "react";
+import { ThemeProvider } from "@/lib/theme-provider";
+// Import motion along with AnimatePresence
+import { AnimatePresence, motion } from "framer-motion"; 
 
 function Router() {
   // Scroll to top on route change
@@ -56,21 +59,28 @@ function App() {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500); // Show loading screen for 2.5 seconds
-    
+
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CustomCursor />
-      {isLoading ? (
-        <LoadingScreen duration={2000} />
-      ) : (
-        <>
-          <Router />
-          <Toaster />
-        </>
-      )}
+      <ThemeProvider defaultTheme="system">
+        <CustomCursor />
+        {/* Wrap the conditional rendering with AnimatePresence */}
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            // Pass the key here, LoadingScreen itself defines the exit animation
+            <LoadingScreen key="loading" />
+          ) : (
+            // Add a key to the main content as well for smooth transition
+            <motion.div key="content" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <Router />
+              <Toaster />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

@@ -6,6 +6,51 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 263 87% 49%; /* Changed to #540CED */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 217 76% 11%; /* Dark navy blue #0A192F */
+    --foreground: 210 40% 98%; /* Adjusted for better contrast with dark navy */
+    --card: 217 76% 11%; /* Match background */
+    --card-foreground: 210 40% 98%;
+    --popover: 217 76% 11%; /* Match background */
+    --popover-foreground: 210 40% 98%;
+    --primary: 160 100% 70%; /* Updated to #64FFDA (teal/mint) */
+    --primary-foreground: 217 76% 11%; /* Dark text on bright primary */
+    --secondary: 217 33% 17%; 
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 75%;
+    --accent: 160 84% 39%; /* Slightly darker accent based on primary */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 160 100% 70%; /* Match primary for consistent focus rings */
+  }
+
   * {
     @apply border-border;
   }
@@ -29,15 +74,44 @@
     @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-primary transition-all duration-300 ease-in-out;
   }
   
+  /* Dark mode specific styles */
+  .dark .prose h1,
+  .dark .prose h2,
+  .dark .prose h3,
+  .dark .prose h4 {
+    @apply text-gray-100;
+  }
+  
+  .dark .prose p,
+  .dark .prose ul,
+  .dark .prose ol {
+    @apply text-gray-300;
+  }
+  
+  .dark .prose a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+  
+  .dark .prose blockquote {
+    @apply border-l-4 border-gray-700 text-gray-400;
+  }
+  
+  .dark .prose code {
+    @apply bg-gray-800 text-gray-200;
+  }
+  
+  .dark .prose pre {
+    @apply bg-gray-800;
+  }
 
-@keyframes scroll {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(15px); opacity: 0; }
-}
+  @keyframes scroll {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0; }
+  }
 
-.animate-scroll {
-  animation: scroll 1.5s ease-in-out infinite;
-}
+  .animate-scroll {
+    animation: scroll 1.5s ease-in-out infinite;
+  }
 
   .nav-link:hover::after, .nav-link.active::after {
     @apply w-full;
