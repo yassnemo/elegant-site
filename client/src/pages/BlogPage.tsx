@@ -12,7 +12,18 @@ interface BlogPost {
   excerpt: string;
   tags: string[];
   content: string;
+  coverImage?: string;
 }
+
+// Helper function to format the date in the desired format
+const formatCardDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+  const year = date.getFullYear();
+  
+  return { day, month, year };
+};
 
 const BlogPage = () => {
   const [activeTag, setActiveTag] = useState<string>('All');
@@ -47,7 +58,7 @@ const BlogPage = () => {
     <div className="pt-20 md:pt-24">
       <div className="container mx-auto px-4 sm:px-6 py-12 md:py-16">
         <AnimatedSection>
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-4xl mx-auto mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">The Blog</h1>
             <p className="text-lg" style={{ color: "#8892B0" }}>
               I write about data science, artificial intelligence, psychology, and other topics I find interesting.
@@ -56,7 +67,7 @@ const BlogPage = () => {
           </div>
           
           {/* Tags filter */}
-          <div className="mb-10 overflow-x-auto pb-2 max-w-3xl mx-auto">
+          <div className="mb-10 overflow-x-auto pb-2 max-w-4xl mx-auto">
             <div className="flex space-x-3">
               {allTags.map((tag, index) => (
                 <button
@@ -74,47 +85,37 @@ const BlogPage = () => {
             </div>
           </div>
           
-          {/* Blog posts */}
-          <div className="max-w-3xl mx-auto space-y-10">
+          {/* Blog posts grid */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, index) => (
-              <Link key={index} href={`/blog/${post.slug}`}>
-                <article className="group cursor-pointer section-transition">
-                  <div className="mb-3">
-                    <span className="text-sm" style={{ color: "#8892B0" }}>{formatDate(post.date)}</span>
+              <div key={index} className="blog-card">
+                <div className="wrapper" style={{ 
+                  backgroundImage: `url(${post.coverImage || 'https://images.unsplash.com/photo-1743527173859-2cf44e80cef8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}>
+                  <div className="date">
+                    {/* Using stacked date format to match the image */}
+                    <span className="day">{formatCardDate(post.date).day}</span>
+                    <span className="month">{formatCardDate(post.date).month}</span>
+                    <span className="year">{formatCardDate(post.date).year}</span>
                   </div>
-                  <h2 className="text-2xl font-bold mb-3 group-hover:text-[#64FFDA] transition-colors">
-                    {post.title}
-                  </h2>
-                  <p style={{ color: "#8892B0" }} className="mb-4">{post.excerpt}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag, i) => (
-                      <span 
-                        key={i} 
-                        className="bg-[#64FFDA] text-[#0A192F] text-xs px-3 py-1 rounded-full"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setActiveTag(tag);
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  
+                  <div className="data">
+                    <div className="content">
+                      <span className="type">{post.tags.join(', ')}</span>
+                      <h1 className="title">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h1>
+                      <p className="text">{post.excerpt}</p>
+                    </div>
                   </div>
-                  <div className="text-[#64FFDA] font-medium flex items-center group-hover:translate-x-1 transition-transform">
-                    Read More <i className="ri-arrow-right-line ml-1"></i>
-                  </div>
-                </article>
-                
-                {/* Divider */}
-                {index < filteredPosts.length - 1 && (
-                  <div className="border-b border-[#112240] my-10"></div>
-                )}
-              </Link>
+                </div>
+              </div>
             ))}
             
             {filteredPosts.length === 0 && (
-              <div className="text-center py-10">
+              <div className="text-center py-10 col-span-full">
                 <p style={{ color: "#8892B0" }}>No articles found with this tag.</p>
               </div>
             )}
