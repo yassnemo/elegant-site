@@ -4,6 +4,16 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 import { formatDate, setupIntersectionObserver } from '@/lib/utils';
 import { blogPosts, blogPostsFallback } from '@/data';
 
+// Helper function to format the date in the desired format
+const formatCardDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+  const year = date.getFullYear();
+  
+  return { day, month, year };
+};
+
 // Define type for blog post
 interface BlogPost {
   title: string;
@@ -14,16 +24,6 @@ interface BlogPost {
   content: string;
   coverImage?: string;
 }
-
-// Helper function to format the date in the desired format
-const formatCardDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-  const year = date.getFullYear();
-  
-  return { day, month, year };
-};
 
 const BlogPage = () => {
   const [activeTag, setActiveTag] = useState<string>('All');
@@ -66,7 +66,7 @@ const BlogPage = () => {
             </p>
           </div>
           
-          {/* Tags filter */}
+          {/* Tags filter - Updated with #6410EA highlight color for light mode only */}
           <div className="mb-10 overflow-x-auto pb-2 max-w-4xl mx-auto">
             <div className="flex space-x-3">
               {allTags.map((tag, index) => (
@@ -75,8 +75,8 @@ const BlogPage = () => {
                   onClick={() => setActiveTag(tag)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     activeTag === tag 
-                      ? 'bg-[#64FFDA] text-[#0A192F]' 
-                      : 'bg-opacity-10 bg-gray-500 text-gray-300 hover:bg-opacity-20'
+                      ? 'bg-[#6410EA] dark:bg-[#1FE1A5] text-white dark:text-[#111111]' 
+                      : 'bg-[#F2F2F2] dark:bg-[#1D293A] text-[#888888] dark:text-[#A6B0C2] hover:bg-opacity-90'
                   }`}
                 >
                   {tag}
