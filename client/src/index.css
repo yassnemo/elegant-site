@@ -177,4 +177,96 @@
       transform: translateY(0);
     }
   }
+
+  /* Theme Toggle Switch Styles */
+  .toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .toggle-slot {
+    position: relative;
+    height: 1.75rem;
+    width: 3.5rem;
+    border: 1.5px solid #e4e7ec;
+    border-radius: 9999px;
+    background-color: white;
+    box-shadow: 0px 2px 4px #e4e7ec;
+    transition: background-color 250ms;
+    display: flex;
+    align-items: center; /* Center items vertically */
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-slot {
+    background-color: #374151;
+  }
+  
+  .toggle-button {
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 50%;
+    background-color: #ffeccf;
+    box-shadow: inset 0px 0px 0px 0.15rem #ffbb52;
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+    top: 50%;
+    transform: translate(1.9rem, -50%); /* Center vertically using transform */
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-slot .toggle-button {
+    background-color: #485367;
+    box-shadow: inset 0px 0px 0px 0.15rem white;
+    transform: translate(0.35rem, -50%); /* Maintain vertical centering when toggled */
+  }
+  
+  .sun-icon {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    color: #ffbb52;
+  }
+  
+  .sun-icon-wrapper {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    opacity: 1;
+    top: 50%;
+    left: 0.4rem;
+    transform: translateY(-50%) rotate(15deg); /* Center vertically with rotation */
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-slot .sun-icon-wrapper {
+    opacity: 0;
+    transform: translateY(-50%) rotate(0deg); /* Maintain vertical centering when toggled */
+  }
+  
+  .moon-icon {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    color: white;
+  }
+  
+  .moon-icon-wrapper {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    opacity: 0;
+    top: 50%;
+    right: 0.4rem;
+    transform: translateY(-50%) rotate(0deg); /* Center vertically */
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26,2.5,.46,.71);
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-slot .moon-icon-wrapper {
+    opacity: 1;
+    transform: translateY(-50%) rotate(-15deg); /* Maintain vertical centering with rotation when toggled */
+  }
 }
