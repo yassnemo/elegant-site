@@ -59,6 +59,19 @@
     @apply font-sans antialiased bg-background text-foreground cursor-none overflow-x-hidden;
   }
 
+  /* Add smooth theme transition to the main elements */
+  body,
+  .bg-background,
+  .text-foreground,
+  .text-primary,
+  .text-muted-foreground,
+  .bg-primary,
+  .border-primary {
+    transition-property: color, background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
   html {
     scroll-behavior: smooth;
   }
