@@ -2,8 +2,8 @@ import { Link } from 'wouter';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { Button } from '@/components/ui/button';
-import { formatDate } from '@/lib/utils';
 import { blogPosts } from '@/data';
+import { BlogPost } from '@/types/blog';
 
 // Helper function to format the date in the desired format
 const formatCardDate = (dateString: string) => {
@@ -29,7 +29,7 @@ const BlogSection = () => {
           {blogPosts.slice(0, 3).map((post, index) => (
             <div key={index} className="blog-card">
               <div className="wrapper" style={{ 
-                backgroundImage: `url(${post.coverImage || 'https://images.unsplash.com/photo-1743527173859-2cf44e80cef8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'})`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1743527173859-2cf44e80cef8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}>
