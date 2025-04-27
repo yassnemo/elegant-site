@@ -4,8 +4,10 @@ import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
 import profileImage from '@/assets/me.jpg';
+import { useTheme } from '@/lib/theme-provider';
 
 const HeroSection = () => {
+  const { theme } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
@@ -101,27 +103,27 @@ const HeroSection = () => {
           <div className="md:w-3/5 md:pl-12 md:pr-10">
             <p className="text-primary font-medium mb-3 text-lg">Hello there, I'm</p>
             <h1 ref={headingRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Yassine Erradouani</h1>
-            <p ref={textRef} className="text-lg md:text-xl mb-6" style={{ color: "#8892B0" }}>
+            <p ref={textRef} className="text-lg md:text-xl text-muted-foreground mb-6">
               A Data Science & Machine Learning student passionate about using <span className="text-primary font-medium">AI for real-world impact</span>.
             </p>
             
             <div ref={tagsRef} className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Science</span>
-              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Analysis</span>
-              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Data Engineering</span>
-              <span className="bg-[#64FFDA] text-[#0A192F] px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">Data Science</span>
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">Data Analysis</span>
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">Data Engineering</span>
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
             </div>
             
             <div ref={buttonsRef} className="flex gap-3">
               <Button 
-                className="bg-[#64FFDA] hover:bg-opacity-90 text-[#0A192F] px-5 py-2 rounded-full font-medium transition-all flex items-center gap-2 text-sm"
+                className="bg-primary hover:bg-opacity-90 text-primary-foreground px-5 py-2 rounded-full font-medium transition-all flex items-center gap-2 text-sm"
                 onClick={() => scrollToSection('projects')}
               >
                 View Projects <i className="ri-arrow-right-line"></i>
               </Button>
               <Button 
                 variant="outline" 
-                className="border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA] hover:text-[#0A192F] px-5 py-2 rounded-full font-medium transition-all text-sm"
+                className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-5 py-2 rounded-full font-medium transition-all text-sm"
                 onClick={() => scrollToSection('contact')}
               >
                 Contact Me
@@ -138,21 +140,21 @@ const HeroSection = () => {
             >
               {/* Square outline frame - with custom border thickness */}
               <div 
-                className="absolute top-4 left-5 w-full h-full border-[#ABF312] z-0 transition-all duration-300 ease-out group-hover:top-5 group-hover:left-6"
+                className="absolute top-4 left-5 w-full h-full border-primary z-0 transition-all duration-300 ease-out group-hover:top-5 group-hover:left-6"
                 style={{ borderWidth: '2.5px' }}
               ></div>
               
               {/* Main image - with color overlay that disappears on hover */}
-              <div className="relative z-10 bg-white transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:-translate-x-0.5">
+              <div className="relative z-10 bg-background transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:-translate-x-0.5">
                 <img 
                   src={profileImage} 
                   alt="Yassine Erradouani" 
                   className="object-cover h-[380px] w-full"
                   onLoad={() => setIsImageLoaded(true)}
                 />
-                {/* Green overlay layer that disappears on hover */}
+                {/* Color overlay layer that disappears on hover */}
                 <div 
-                  className="absolute inset-0 bg-[#ABF312] opacity-30 transition-opacity duration-300 ease-out group-hover:opacity-0"
+                  className="absolute inset-0 bg-primary opacity-30 transition-opacity duration-300 ease-out group-hover:opacity-0"
                   style={{ mixBlendMode: 'multiply' }}
                 ></div>
               </div>
