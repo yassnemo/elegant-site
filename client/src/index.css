@@ -557,3 +557,53 @@
     transform: translateY(-50%) rotate(-15deg); /* Maintain vertical centering with rotation when toggled */
   }
 }
+
+@keyframes animate-border-gradient {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: bottom;
+  }
+}
+
+/* Project card gradient border effect */
+.project-card-wrapper {
+  position: relative;
+  padding: 2.5px;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card-wrapper:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 50px -15px rgba(var(--primary), 0.5);
+}
+
+.project-card-wrapper .card-border-gradient {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  height: 300%;
+  width: 10rem;
+  z-index: -1;
+  background: linear-gradient(to right, transparent, hsl(var(--primary)), transparent);
+  transition: opacity 0.3s;
+  opacity: 0;
+  animation: animate-border-gradient 5s infinite linear;
+}
+
+.dark .project-card-wrapper .card-border-gradient {
+  background: linear-gradient(to right, transparent, #64FFDA, transparent);
+}
+
+.project-card-wrapper:hover .card-border-gradient {
+  opacity: 1;
+}

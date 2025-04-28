@@ -75,73 +75,76 @@ const ProjectsPage = () => {
                 href={`/projects/${project.slug}`}
                 className="group"
               >
-                <div className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 section-transition h-full flex flex-col">
-                  <div className="relative overflow-hidden aspect-video">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <div className="p-6 text-white">
-                        <div className="font-medium">View Project</div>
+                <div className="project-card-wrapper">
+                  <div className="card-border-gradient"></div>
+                  <div className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 section-transition h-full flex flex-col w-full">
+                    <div className="relative overflow-hidden aspect-video">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="p-6 text-white">
+                          <div className="font-medium">View Project</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">{project.description}</p>
                     
-                    <div className="mt-auto">
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech, i) => (
-                          <span 
-                            key={i} 
-                            className="bg-[#ABF312] dark:bg-[#64FFDA] text-gray-700 dark:text-gray-900 text-xs px-3 py-1 rounded-full cursor-pointer font-semibold"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              setActiveFilter(tech);
-                            }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">{project.description}</p>
                       
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary dark:text-[#64FFDA] font-medium group-hover:translate-x-1 transition-transform flex items-center">
-                          Details <i className="ri-arrow-right-line ml-1"></i>
+                      <div className="mt-auto">
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.map((tech, i) => (
+                            <span 
+                              key={i} 
+                              className="bg-[#ABF312] dark:bg-[#64FFDA] text-gray-700 dark:text-gray-900 text-xs px-3 py-1 rounded-full cursor-pointer font-semibold"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setActiveFilter(tech);
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                         
-                        <div className="flex space-x-3">
-                          {project.github && (
-                            <span 
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                window.open(project.github, '_blank', 'noopener,noreferrer');
-                              }}
-                              className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
-                              aria-label="GitHub repository"
-                            >
-                              <i className="ri-github-fill text-xl"></i>
-                            </span>
-                          )}
-                          {project.demo && (
-                            <span 
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                window.open(project.demo, '_blank', 'noopener,noreferrer');
-                              }}
-                              className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
-                              aria-label="Live demo"
-                            >
-                              <i className="ri-external-link-line text-xl"></i>
-                            </span>
-                          )}
+                        <div className="flex justify-between items-center">
+                          <div className="text-primary dark:text-[#64FFDA] font-medium group-hover:translate-x-1 transition-transform flex items-center">
+                            Details <i className="ri-arrow-right-line ml-1"></i>
+                          </div>
+                          
+                          <div className="flex space-x-3">
+                            {project.github && (
+                              <span 
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  window.open(project.github, '_blank', 'noopener,noreferrer');
+                                }}
+                                className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
+                                aria-label="GitHub repository"
+                              >
+                                <i className="ri-github-fill text-xl"></i>
+                              </span>
+                            )}
+                            {project.demo && (
+                              <span 
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  window.open(project.demo, '_blank', 'noopener,noreferrer');
+                                }}
+                                className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
+                                aria-label="Live demo"
+                              >
+                                <i className="ri-external-link-line text-xl"></i>
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
