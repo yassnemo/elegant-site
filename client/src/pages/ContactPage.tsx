@@ -187,8 +187,8 @@ const ContactPage = () => {
                 
                 <div className="space-y-8">
                   <div className="flex items-start">
-                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
-                      <i className="ri-mail-line text-white text-xl"></i>
+                    <div className="bg-primary dark:bg-[#64FFDA] p-3 rounded-full mr-4">
+                      <i className="ri-mail-line text-white dark:text-gray-900 text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Email</h4>
@@ -198,8 +198,8 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
-                      <i className="ri-map-pin-line text-white text-xl"></i>
+                    <div className="bg-primary dark:bg-[#64FFDA] p-3 rounded-full mr-4">
+                      <i className="ri-map-pin-line text-white dark:text-gray-900 text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Location</h4>
@@ -209,8 +209,8 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
-                      <i className="ri-links-line text-white text-xl"></i>
+                    <div className="bg-primary dark:bg-[#64FFDA] p-3 rounded-full mr-4">
+                      <i className="ri-links-line text-white dark:text-gray-900 text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Social</h4>

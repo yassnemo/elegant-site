@@ -30,8 +30,8 @@ const ProjectDetailPage = () => {
     return (
       <div className="pt-28 pb-20">
         <div className="container mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
-          <p className="mb-8">Sorry, the project you're looking for doesn't exist.</p>
+          <h1 className="text-3xl font-bold mb-4 dark:text-gray-100">Project Not Found</h1>
+          <p className="mb-8 dark:text-gray-300">Sorry, the project you're looking for doesn't exist.</p>
           <Link href="/projects">
             <Button variant="default">Back to Projects</Button>
           </Link>
@@ -69,10 +69,10 @@ const ProjectDetailPage = () => {
             {/* Content */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
-                <div className="prose max-w-none">
+                <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">Project Overview</h2>
+                <div className="prose max-w-none dark:prose-invert">
                   {project.longDescription.split('\n').map((paragraph: string, idx: number) => (
-                    <p key={idx} className="mb-4 text-gray-600">
+                    <p key={idx} className="mb-4 text-gray-600 dark:text-gray-300">
                       {paragraph.trim()}
                     </p>
                   ))}
@@ -80,20 +80,20 @@ const ProjectDetailPage = () => {
               </div>
               
               <div className="lg:col-span-1">
-                <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-xl font-bold mb-4">Project Details</h3>
+                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-xl font-bold mb-4 dark:text-gray-100">Project Details</h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500">PROJECT TYPE</h4>
-                      <p className="font-medium">Data Science & AI</p>
+                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">PROJECT TYPE</h4>
+                      <p className="font-medium dark:text-gray-200">Data Science & AI</p>
                     </div>
                     
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500">TECHNOLOGIES</h4>
+                      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">TECHNOLOGIES</h4>
                       <div className="flex flex-wrap gap-2 mt-1">
                         {project.technologies.map((tech: string, i: number) => (
-                          <span key={i} className="bg-primary text-white text-xs px-2 py-1 rounded-md">
+                          <span key={i} className="bg-primary dark:bg-[#64FFDA] text-white dark:text-gray-900 text-xs px-2 py-1 rounded-md">
                             {tech}
                           </span>
                         ))}
@@ -107,7 +107,7 @@ const ProjectDetailPage = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-[#24292e] text-white px-4 py-2 rounded-md text-sm flex items-center justify-center"
+                            className="bg-[#24292e] text-white px-4 py-2 rounded-md text-sm flex items-center justify-center hover:bg-opacity-90 transition-all"
                           >
                             <i className="ri-github-fill mr-2 text-lg"></i>
                             View on GitHub
@@ -119,7 +119,7 @@ const ProjectDetailPage = () => {
                             href={project.demo}
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="bg-primary text-white px-4 py-2 rounded-md text-sm flex items-center justify-center"
+                            className="bg-primary dark:bg-[#64FFDA] text-white dark:text-gray-900 px-4 py-2 rounded-md text-sm flex items-center justify-center hover:bg-opacity-90 transition-all"
                           >
                             <i className="ri-external-link-line mr-2 text-lg"></i>
                             View Live Demo
@@ -133,23 +133,23 @@ const ProjectDetailPage = () => {
             </div>
             
             {/* Navigation */}
-            <div className="border-t border-gray-200 pt-8 mt-8">
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-8">
               <div className="flex flex-col sm:flex-row justify-between items-center">
-                <Link href="/projects" className="flex items-center text-primary hover:underline mb-4 sm:mb-0">
+                <Link href="/projects" className="flex items-center text-primary dark:text-[#64FFDA] hover:underline mb-4 sm:mb-0">
                   <i className="ri-arrow-left-line mr-2"></i>
                   Back to all projects
                 </Link>
                 
                 <div className="flex items-center">
-                  <span className="text-gray-500 mr-4">Share:</span>
+                  <span className="text-gray-500 dark:text-gray-400 mr-4">Share:</span>
                   <div className="flex space-x-3">
-                    <a href="#" className="text-gray-500 hover:text-primary transition-colors">
+                    <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors">
                       <i className="ri-twitter-fill text-xl"></i>
                     </a>
-                    <a href="#" className="text-gray-500 hover:text-primary transition-colors">
+                    <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors">
                       <i className="ri-linkedin-fill text-xl"></i>
                     </a>
-                    <a href="#" className="text-gray-500 hover:text-primary transition-colors">
+                    <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors">
                       <i className="ri-facebook-fill text-xl"></i>
                     </a>
                   </div>
