@@ -187,8 +187,8 @@ const ContactPage = () => {
                 
                 <div className="space-y-8">
                   <div className="flex items-start">
-                    <div className="bg-primary bg-opacity-10 dark:bg-primary/20 p-3 rounded-full mr-4">
-                      <i className="ri-mail-line text-primary dark:text-[#64FFDA] text-xl"></i>
+                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
+                      <i className="ri-mail-line text-white text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Email</h4>
@@ -198,8 +198,8 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary bg-opacity-10 dark:bg-primary/20 p-3 rounded-full mr-4">
-                      <i className="ri-map-pin-line text-primary dark:text-[#64FFDA] text-xl"></i>
+                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
+                      <i className="ri-map-pin-line text-white text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Location</h4>
@@ -209,15 +209,15 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary bg-opacity-10 dark:bg-primary/20 p-3 rounded-full mr-4">
-                      <i className="ri-links-line text-primary dark:text-[#64FFDA] text-xl"></i>
+                    <div className="bg-primary dark:bg-[#6E56CF] p-3 rounded-full mr-4">
+                      <i className="ri-links-line text-white text-xl"></i>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-1 dark:text-gray-200">Social</h4>
                       <div className="flex gap-3 mt-2">
                         <a 
                           href="https://github.com/yassine-erradouani" 
-                          className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all dark:text-gray-200"
+                          className="bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all text-gray-700 dark:text-[#64FFDA]"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="GitHub profile"
@@ -226,7 +226,7 @@ const ContactPage = () => {
                         </a>
                         <a 
                           href="https://linkedin.com/in/yassine-erradouani" 
-                          className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all dark:text-gray-200"
+                          className="bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all text-gray-700 dark:text-[#64FFDA]"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="LinkedIn profile"
@@ -235,7 +235,7 @@ const ContactPage = () => {
                         </a>
                         <a 
                           href="https://medium.com/@yassine-erradouani" 
-                          className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all dark:text-gray-200"
+                          className="bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all text-gray-700 dark:text-[#64FFDA]"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="Medium profile"
@@ -244,7 +244,7 @@ const ContactPage = () => {
                         </a>
                         <a 
                           href="https://soundcloud.com/yassine-erradouani" 
-                          className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all dark:text-gray-200"
+                          className="bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:bg-primary hover:text-white dark:hover:bg-[#64FFDA] dark:hover:text-gray-900 transition-all text-gray-700 dark:text-[#64FFDA]"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="SoundCloud profile"
