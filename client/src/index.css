@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -27,6 +28,25 @@
     --input: 220 13% 91%;
     --ring: 224 71.4% 4.1%;
     --radius: 0.5rem;
+    
+    /* Book card variables */
+    --paper: #e0e0e0;
+    --borderRad: .5em;
+    --shadowOpacity: rgba(0,0,0,0.3);
+    --transition: 0.5s ease;
+    --hardCoverColor: rgb(236, 221, 180);
+    --bodyBackground: #de9d92;
+    --containerBackground: linear-gradient(to bottom right,#d95f4a,rgb(226, 132, 115));
+    --testing: 1px solid black;
+    --borderRad1: 1em;
+    --borderRad2: .5em;
+    --gap: 1em;
+    --fontColorPrimary: rgb(19, 18, 18);
+    --fontColorSecondary: rgb(30,32,24);
+    --fontSizeLarge: clamp(1.8em,2em,2.2em);
+    --fontSizeSmall: clamp(1.2em,1.4em,1.6em);
+    --fontSizeMedium: clamp(1.4em,1.6em,1.8em);
+    --padding: 1em;
   }
  
   .dark {
@@ -49,6 +69,12 @@
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 160 100% 70%; /* Match primary for consistent focus rings */
+    
+    /* Dark mode book card variables */
+    --paper: #112240;
+    --shadowOpacity: rgba(0,0,0,0.5);
+    --fontColorPrimary: rgb(241, 241, 241);
+    --fontColorSecondary: rgb(241, 241, 241);
   }
 
   * {
@@ -85,6 +111,86 @@
   .nav-link::after {
     content: '';
     @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-primary transition-all duration-300 ease-in-out;
+  }
+
+  /* Book card styles based on CodePen example */
+  .book {
+    cursor: pointer;
+    display: block;
+    width: 180px;
+    height: 260px;
+    position: relative;
+    background: #ffffff;
+    z-index: 1;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 9px 20px 0 rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .dark .book {
+    background: #112240;
+  }
+  
+  .book:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+  }
+  
+  .book:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), 0 9px 20px 0 rgba(0, 0, 0, 0.45);
+    transform: translateY(-5px);
+  }
+
+  .book img {
+    width: inherit;
+    height: inherit;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transform-origin: 0 50%;
+    transform: rotateY(0);
+    transition: all 0.45s ease;
+    object-fit: cover;
+  }
+
+  .book:hover img {
+    transform: rotateY(-25deg);
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .book::after,
+  .book::before {
+    content: '';
+    display: block;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .dark .book::after,
+  .dark .book::before {
+    background: #112240;
+    border: 1px solid #1d3557;
+  }
+
+  .book::before {
+    left: -3px;
+  }
+
+  .book::after {
+    left: -6px;
+  }
+
+  /* Hide the book info tooltip */
+  .book-info {
+    display: none;
   }
 
   /* Blog card animation styles */
