@@ -42,7 +42,7 @@ const ProjectsPage = () => {
         <AnimatedSection>
           <div className="max-w-3xl mx-auto mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Projects</h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               A showcase of my data science and machine learning projects, 
               focused on creating AI solutions with real-world impact.
             </p>
@@ -57,8 +57,8 @@ const ProjectsPage = () => {
                   onClick={() => setActiveFilter(tech)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     activeFilter === tech 
-                      ? 'bg-primary text-white shadow-sm' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-primary text-white dark:text-gray-900 shadow-sm' 
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
                   {tech}
@@ -75,7 +75,7 @@ const ProjectsPage = () => {
                 href={`/projects/${project.slug}`}
                 className="group"
               >
-                <div className="overflow-hidden rounded-lg bg-white shadow-md hover:shadow-xl transition-all duration-300 section-transition h-full flex flex-col">
+                <div className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 section-transition h-full flex flex-col">
                   <div className="relative overflow-hidden aspect-video">
                     <img 
                       src={project.image} 
@@ -91,14 +91,14 @@ const ProjectsPage = () => {
                   
                   <div className="p-6 flex-1 flex flex-col">
                     <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                    <p className="text-gray-600 mb-4 flex-1">{project.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">{project.description}</p>
                     
                     <div className="mt-auto">
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.technologies.map((tech, i) => (
                           <span 
                             key={i} 
-                            className="bg-[#ABF312] text-gray-700 text-xs px-3 py-1 rounded-full cursor-pointer font-semibold"
+                            className="bg-[#ABF312] dark:bg-[#64FFDA] text-gray-700 dark:text-gray-900 text-xs px-3 py-1 rounded-full cursor-pointer font-semibold"
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
@@ -111,7 +111,7 @@ const ProjectsPage = () => {
                       </div>
                       
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-medium group-hover:translate-x-1 transition-transform flex items-center">
+                        <div className="text-primary dark:text-[#64FFDA] font-medium group-hover:translate-x-1 transition-transform flex items-center">
                           Details <i className="ri-arrow-right-line ml-1"></i>
                         </div>
                         
@@ -123,7 +123,7 @@ const ProjectsPage = () => {
                                 e.stopPropagation();
                                 window.open(project.github, '_blank', 'noopener,noreferrer');
                               }}
-                              className="text-gray-500 hover:text-primary transition-colors cursor-pointer"
+                              className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
                               aria-label="GitHub repository"
                             >
                               <i className="ri-github-fill text-xl"></i>
@@ -136,7 +136,7 @@ const ProjectsPage = () => {
                                 e.stopPropagation();
                                 window.open(project.demo, '_blank', 'noopener,noreferrer');
                               }}
-                              className="text-gray-500 hover:text-primary transition-colors cursor-pointer"
+                              className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-[#64FFDA] transition-colors cursor-pointer"
                               aria-label="Live demo"
                             >
                               <i className="ri-external-link-line text-xl"></i>
@@ -153,7 +153,7 @@ const ProjectsPage = () => {
           
           {filteredProjects.length === 0 && (
             <div className="text-center py-10">
-              <p className="text-gray-500">No projects found with this technology.</p>
+              <p className="text-gray-500 dark:text-gray-400">No projects found with this technology.</p>
             </div>
           )}
         </AnimatedSection>

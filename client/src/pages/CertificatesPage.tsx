@@ -35,7 +35,7 @@ const CertificatesPage = () => {
         <AnimatedSection>
           <div className="max-w-3xl mx-auto mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Certificates</h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               Professional certifications and specialized training in data science, 
               machine learning, and artificial intelligence.
             </p>
@@ -50,8 +50,8 @@ const CertificatesPage = () => {
                   onClick={() => setActiveFilter(org)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     activeFilter === org 
-                      ? 'bg-primary text-white shadow-sm' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-primary text-white dark:text-gray-900 shadow-sm' 
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
                   {org}
@@ -68,7 +68,7 @@ const CertificatesPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -76,23 +76,23 @@ const CertificatesPage = () => {
                     alt={certificate.title} 
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute top-3 right-3 bg-[#ABF312] text-gray-700 text-xs px-3 py-1 rounded-full font-semibold">
+                  <div className="absolute top-3 right-3 bg-[#ABF312] dark:bg-[#64FFDA] text-gray-700 dark:text-gray-900 text-xs px-3 py-1 rounded-full font-semibold">
                     {certificate.date}
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{certificate.title}</h3>
-                  <p className="text-primary font-medium mb-3">{certificate.organization}</p>
-                  <p className="text-gray-600 text-sm mb-4">{certificate.description}</p>
+                  <h3 className="text-xl font-bold mb-2 dark:text-gray-100">{certificate.title}</h3>
+                  <p className="text-primary dark:text-[#64FFDA] font-medium mb-3">{certificate.organization}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{certificate.description}</p>
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500">Credential ID: {certificate.credentials}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Credential ID: {certificate.credentials}</span>
                     <a 
                       href={certificate.link} 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 transition-colors font-medium text-sm flex items-center gap-1"
+                      className="text-primary dark:text-[#64FFDA] hover:text-primary/80 dark:hover:text-[#64FFDA]/80 transition-colors font-medium text-sm flex items-center gap-1"
                     >
                       Verify <i className="ri-external-link-line"></i>
                     </a>
@@ -104,7 +104,7 @@ const CertificatesPage = () => {
           
           {filteredCertificates.length === 0 && (
             <div className="text-center py-10">
-              <p className="text-gray-500">No certificates found for this organization.</p>
+              <p className="text-gray-500 dark:text-gray-400">No certificates found for this organization.</p>
             </div>
           )}
         </AnimatedSection>
