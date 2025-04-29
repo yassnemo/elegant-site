@@ -5,6 +5,45 @@ import { Button } from '@/components/ui/button';
 import { setupIntersectionObserver } from '@/lib/utils';
 import { skills, education, experience } from '@/data';
 
+// Map skills to appropriate icons
+const skillIconMap: Record<string, string> = {
+  // Programming Languages
+  'Python': 'ri-python-fill',
+  'JavaScript': 'ri-javascript-fill',
+  'TypeScript': 'ri-typescript-fill',
+  'R': 'ri-letter-r',
+  
+  // ML/AI Frameworks
+  'TensorFlow': 'ri-brain-fill',
+  'PyTorch': 'ri-fire-fill',
+  'Scikit-learn': 'ri-bar-chart-grouped-fill',
+  'Keras': 'ri-shape-line',
+  
+  // Data Processing
+  'Pandas': 'ri-bar-chart-box-line',
+  'NumPy': 'ri-numbers-line',
+  'SQL': 'ri-database-2-line',
+  'Spark': 'ri-flashlight-line',
+  
+  // Visualization
+  'Data Visualization': 'ri-line-chart-line',
+  'Tableau': 'ri-bar-chart-fill',
+  'D3.js': 'ri-chart-pie-2-line',
+  'Matplotlib': 'ri-line-chart-fill',
+  
+  // Cloud & DevOps
+  'AWS': 'ri-cloud-fill',
+  'Docker': 'ri-ship-line',
+  'Git': 'ri-git-branch-line',
+  'CI/CD': 'ri-loop-line',
+  
+  // Specializations
+  'NLP': 'ri-chat-3-line',
+  'Computer Vision': 'ri-eye-line',
+  'Deep Learning': 'ri-seedling-fill',
+  'Machine Learning': 'ri-robot-line'
+};
+
 const ResumePage = () => {
   useEffect(() => {
     // Set page title
@@ -50,58 +89,64 @@ const ResumePage = () => {
                 {skills.map((skill, index) => (
                   <span 
                     key={index} 
-                    className={index % 3 === 0 ? "skill-pill bg-primary dark:bg-[#64FFDA] text-white dark:text-gray-900 px-4 py-2 rounded-full text-sm font-medium" : "skill-pill bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium"}
+                    className={index % 3 === 0 ? 
+                      "skill-pill bg-primary dark:bg-[#64FFDA] text-white dark:text-gray-900 px-4 py-2 rounded-full text-sm font-medium flex items-center hover:shadow-md transition-all" : 
+                      "skill-pill bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium flex items-center hover:shadow-md transition-all"
+                    }
                   >
+                    <i className={`${skillIconMap[skill] || 'ri-code-line'} mr-1.5`}></i>
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
             
-            <div className="mb-10">
-              <h2 className="text-2xl font-bold mb-6 inline-flex items-center dark:text-gray-100">
-                <i className="ri-government-line text-primary dark:text-[#64FFDA] mr-2"></i> Education
-              </h2>
-              
-              <div className="space-y-8">
-                {education.map((edu, index) => (
-                  <div key={index} className="border-l-2 border-primary dark:border-[#64FFDA] pl-5 py-2 relative">
-                    <div className="absolute w-3 h-3 bg-primary dark:bg-[#64FFDA] rounded-full -left-[7px] top-[18px]"></div>
-                    <h3 className="text-xl font-bold dark:text-gray-100">{edu.degree}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">{edu.institution}</p>
-                    <p className="text-gray-500 dark:text-gray-400">{edu.period}</p>
-                    {edu.description && <p className="text-gray-600 dark:text-gray-400 mt-2">{edu.description}</p>}
-                  </div>
-                ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+              <div>
+                <h2 className="text-2xl font-bold mb-6 inline-flex items-center dark:text-gray-100">
+                  <i className="ri-briefcase-4-line text-primary dark:text-[#64FFDA] mr-2"></i> Work Experience
+                </h2>
+                
+                <div className="space-y-8">
+                  {experience.map((exp, index) => (
+                    <div key={index} className="border-l-2 border-primary dark:border-[#64FFDA] pl-5 py-2 relative">
+                      <div className="absolute w-3 h-3 bg-primary dark:bg-[#64FFDA] rounded-full -left-[7px] top-[18px]"></div>
+                      <h3 className="text-xl font-bold dark:text-gray-100">{exp.position}</h3>
+                      <p className="text-gray-700 dark:text-gray-300 font-medium">{exp.company}</p>
+                      <p className="text-gray-500 dark:text-gray-400">{exp.period}</p>
+                      <p className="text-gray-600 dark:text-gray-400 mt-2">{exp.description}</p>
+                      
+                      {exp.achievements && (
+                        <div className="mt-3">
+                          <p className="font-medium dark:text-gray-300">Key Achievements:</p>
+                          <ul className="list-disc pl-5 mt-1 text-gray-600 dark:text-gray-400">
+                            {exp.achievements.map((achievement, i) => (
+                              <li key={i}>{achievement}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            <div className="mb-10">
-              <h2 className="text-2xl font-bold mb-6 inline-flex items-center dark:text-gray-100">
-                <i className="ri-briefcase-4-line text-primary dark:text-[#64FFDA] mr-2"></i> Work Experience
-              </h2>
               
-              <div className="space-y-8">
-                {experience.map((exp, index) => (
-                  <div key={index} className="border-l-2 border-primary dark:border-[#64FFDA] pl-5 py-2 relative">
-                    <div className="absolute w-3 h-3 bg-primary dark:bg-[#64FFDA] rounded-full -left-[7px] top-[18px]"></div>
-                    <h3 className="text-xl font-bold dark:text-gray-100">{exp.position}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">{exp.company}</p>
-                    <p className="text-gray-500 dark:text-gray-400">{exp.period}</p>
-                    <p className="text-gray-600 dark:text-gray-400 mt-2">{exp.description}</p>
-                    
-                    {exp.achievements && (
-                      <div className="mt-3">
-                        <p className="font-medium dark:text-gray-300">Key Achievements:</p>
-                        <ul className="list-disc pl-5 mt-1 text-gray-600 dark:text-gray-400">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ))}
+              <div>
+                <h2 className="text-2xl font-bold mb-6 inline-flex items-center dark:text-gray-100">
+                  <i className="ri-government-line text-primary dark:text-[#64FFDA] mr-2"></i> Education
+                </h2>
+                
+                <div className="space-y-8">
+                  {education.map((edu, index) => (
+                    <div key={index} className="border-l-2 border-primary dark:border-[#64FFDA] pl-5 py-2 relative">
+                      <div className="absolute w-3 h-3 bg-primary dark:bg-[#64FFDA] rounded-full -left-[7px] top-[18px]"></div>
+                      <h3 className="text-xl font-bold dark:text-gray-100">{edu.degree}</h3>
+                      <p className="text-gray-700 dark:text-gray-300 font-medium">{edu.institution}</p>
+                      <p className="text-gray-500 dark:text-gray-400">{edu.period}</p>
+                      {edu.description && <p className="text-gray-600 dark:text-gray-400 mt-2">{edu.description}</p>}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             

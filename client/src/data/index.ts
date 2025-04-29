@@ -261,20 +261,43 @@ export const books = [
   }
 ];
 
-// Skills data
+// Skills data - organized by categories
 export const skills = [
+  // Programming Languages
   'Python',
+  'JavaScript',
+  'TypeScript',
+  'R',
+  
+  // ML/AI Frameworks
   'TensorFlow',
   'PyTorch',
   'Scikit-learn',
-  'SQL',
-  'Git',
+  'Keras',
+  
+  // Data Processing
   'Pandas',
   'NumPy',
+  'SQL',
+  'Spark',
+  
+  // Visualization
   'Data Visualization',
+  'Tableau',
+  'D3.js',
+  'Matplotlib',
+  
+  // Cloud & DevOps
+  'AWS',
+  'Docker',
+  'Git',
+  'CI/CD',
+  
+  // Specializations
   'NLP',
   'Computer Vision',
-  'Docker'
+  'Deep Learning',
+  'Machine Learning'
 ];
 
 // Education data
